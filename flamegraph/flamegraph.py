@@ -143,7 +143,7 @@ def main():
   script_compiled = compile(open(args.script_file, 'rb').read(), args.script_file, 'exec')
   script_globals = {'__name__': '__main__', '__file__': args.script_file, '__package__': None}
 
-  start_time = time.clock()
+  start_time = time.time()
   thread.start()
 
   try:
@@ -153,7 +153,7 @@ def main():
     thread.stop()
     thread.join()
     print('Elapsed Time: %2.2f seconds.  Collected %d stack frames (%d unique)'
-        % (time.clock() - start_time, thread.num_frames(), thread.num_frames(unique=True)))
+        % (time.time() - start_time, thread.num_frames(), thread.num_frames(unique=True)))
 
 if __name__ == '__main__':
   main()

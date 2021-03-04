@@ -40,7 +40,7 @@ class ProfileThread(threading.Thread):
     self.daemon = True
 
     self._lock = threading.Lock()
-    self._fd = fd
+    self._fd = open(fd, "w", newline="\n")
     self._written = False
     self._interval = interval
     self._format_entry = format_entry
@@ -115,7 +115,7 @@ def main():
       help='Script to profile')
   parser.add_argument('script_args', metavar='[arguments...]', type=str, nargs=argparse.REMAINDER,
       help='Arguments for script')
-  parser.add_argument('-o', '--output', nargs='?', type=argparse.FileType('w'), default=sys.stderr,
+  parser.add_argument('-o', '--output', nargs='?', type=str, default=sys.stderr,
       help='Save stats to file. If not specified default is to stderr')
   parser.add_argument('-i', '--interval', type=float, nargs='?', default=0.001,
       help='Interval in seconds for collection of stackframes (default: %(default)ss)')

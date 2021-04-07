@@ -1,3 +1,10 @@
+WARNING: I would recommend using py-spy : https://github.com/benfred/py-spy
+
+More efficient implementation (and in Rust, yay !) which also manages native modules calls.
+This version does not work with native code on windows, some other forks may work (but mostly on UNIX-like systems) but untested.
+
+END WARNING
+
 A simple statistical profiler which outputs in format suitable for FlameGraph_.
 
 INSTALL:
